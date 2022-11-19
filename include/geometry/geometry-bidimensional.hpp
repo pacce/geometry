@@ -36,6 +36,12 @@ namespace d2 {
                 return *this;
             }
 
+            Point<Precision>&
+            operator*=(const Precision& rhs) {
+                value_ *= rhs;
+                return *this;
+            }
+
             friend Point<Precision>
             operator+(const Point<Precision>& lhs, const Point<Precision>& rhs) {
                 Point<Precision> add = lhs;
@@ -45,9 +51,23 @@ namespace d2 {
 
             friend Point<Precision>
             operator-(const Point<Precision>& lhs, const Point<Precision>& rhs) {
-                Point<Precision> add = lhs;
-                add -= rhs;
-                return add;
+                Point<Precision> sub = lhs;
+                sub -= rhs;
+                return sub;
+            }
+
+            friend Point<Precision>
+            operator*(const Point<Precision>& p, const Precision& scalar) {
+                Point<Precision> mul = p;
+                mul *= scalar;
+                return mul;
+            }
+
+            friend Point<Precision>
+            operator*(const Precision& scalar, const Point<Precision>& p) {
+                Point<Precision> mul = p;
+                mul *= scalar;
+                return mul;
             }
 
             friend bool

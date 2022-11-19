@@ -15,6 +15,18 @@ namespace rc {
                     );
         }
     };
+
+    template<typename Precision>
+    struct Arbitrary<geometry::d3::Point<Precision>> {
+        static Gen<geometry::d3::Point<Precision>>
+        arbitrary() {
+            return gen::construct<geometry::d3::Point<Precision>>(
+                      gen::cast<Precision>(gen::inRange(-100, 100))
+                    , gen::cast<Precision>(gen::inRange(-100, 100))
+                    , gen::cast<Precision>(gen::inRange(-100, 100))
+                    );
+        }
+    };
 }
 
 #endif // GEOMETRY_ARBITRARY_HPP__

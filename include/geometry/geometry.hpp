@@ -2,6 +2,7 @@
 #define GEOMETRY_HPP__
 
 #include "geometry-bidimensional.hpp"
+#include "geometry-tridimensional.hpp"
 
 namespace geometry {
 } // namespace geometry

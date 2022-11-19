@@ -73,8 +73,8 @@ namespace d2 {
             friend bool
             operator==(const Point<Precision>& lhs, const Point<Precision>& rhs) {
                 const Precision TOL = 0.01;
-                if ((lhs.x() != rhs.x()) || std::abs(lhs.x() - rhs.x()) > TOL) { return false; }
-                if ((lhs.y() != rhs.y()) || std::abs(lhs.y() - rhs.y()) > TOL) { return false; }
+                if (std::abs(lhs.x() - rhs.x()) > TOL) { return false; }
+                if (std::abs(lhs.y() - rhs.y()) > TOL) { return false; }
                 return true;
             }
 

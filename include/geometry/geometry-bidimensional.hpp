@@ -82,6 +82,16 @@ namespace d2 {
             operator!=(const Point<Precision>& lhs, const Point<Precision>& rhs) {
                 return !(lhs == rhs);
             }
+
+            Precision
+            dot(const Point<Precision>& other) const {
+                return value_.dot(other.value_);
+            }
+
+            Precision
+            norm() const {
+                return value_.norm();
+            }
         private:
             Eigen::Vector<Precision, 2> value_;
     };

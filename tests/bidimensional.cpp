@@ -37,6 +37,40 @@ namespace f32 {
         float scalar = 0.0f;
         RC_ASSERT((xs * scalar) == Point(0.0f, 0.0f));
     }
+
+    TEST(Dot, Zero) {
+        Point xs(0.0f, 0.0f);
+        EXPECT_FLOAT_EQ(0.0f, xs.dot(xs));
+    }
+
+    RC_GTEST_PROP(Dot, Commutative, (const Point& xs, const Point& ys)) {
+        RC_ASSERT(xs.dot(ys) == ys.dot(xs));
+    }
+
+    RC_GTEST_PROP(Dot, Scalar, (const Point& xs, const Point& ys)) {
+        float scalar = *rc::gen::inRange(-100, 100);
+        RC_ASSERT(scalar * xs.dot(ys) == ys.dot(scalar * xs));
+    }
+
+    TEST(Norm, Zero) {
+        EXPECT_FLOAT_EQ(0.0f, Point(0.0f, 0.0f).norm());
+    }
+
+    RC_GTEST_PROP(Norm, Square, ()) {
+        float scalar = *rc::gen::inRange(-100, 100);
+        EXPECT_FLOAT_EQ(
+                  std::sqrt(2.0f) * std::abs(scalar)
+                , Point(scalar, scalar).norm()
+                );
+    }
+
+    RC_GTEST_PROP(Norm, Scale, (const Point& xs)) {
+        float scalar = *rc::gen::inRange(0, 100);
+        EXPECT_FLOAT_EQ(
+                  xs.norm() * scalar
+                , (scalar * xs).norm()
+                );
+    }
 } // namespace f32
 
 namespace f64 {
@@ -73,6 +107,40 @@ namespace f64 {
         double scalar = 0.0;
         RC_ASSERT((xs * scalar) == Point(0.0, 0.0));
     }
+
+    TEST(Dot, Zero) {
+        Point xs(0.0, 0.0);
+        EXPECT_FLOAT_EQ(0.0, xs.dot(xs));
+    }
+
+    RC_GTEST_PROP(Dot, Commutative, (const Point& xs, const Point& ys)) {
+        RC_ASSERT(xs.dot(ys) == ys.dot(xs));
+    }
+
+    RC_GTEST_PROP(Dot, Scalar, (const Point& xs, const Point& ys)) {
+        double scalar = *rc::gen::inRange(-100, 100);
+        RC_ASSERT(scalar * xs.dot(ys) == ys.dot(scalar * xs));
+    }
+
+    TEST(Norm, Zero) {
+        EXPECT_FLOAT_EQ(0.0, Point(0.0, 0.0).norm());
+    }
+
+    RC_GTEST_PROP(Norm, Square, ()) {
+        double scalar = *rc::gen::inRange(-100, 100);
+        EXPECT_FLOAT_EQ(
+                  std::sqrt(2.0) * std::abs(scalar)
+                , Point(scalar, scalar).norm()
+                );
+    }
+
+    RC_GTEST_PROP(Norm, Scale, (const Point& xs)) {
+        double scalar = *rc::gen::inRange(0, 100);
+        EXPECT_FLOAT_EQ(
+                  xs.norm() * scalar
+                , (scalar * xs).norm()
+                );
+    }
 } // namespace f64
 
 namespace f128 {
@@ -108,6 +176,40 @@ namespace f128 {
     RC_GTEST_PROP(Mul, Zero, (const Point& xs)) {
         long double scalar = 0.0;
         RC_ASSERT((xs * scalar) == Point(0.0, 0.0));
+    }
+
+    TEST(Dot, Zero) {
+        Point xs(0.0, 0.0);
+        EXPECT_FLOAT_EQ(0.0, xs.dot(xs));
+    }
+
+    RC_GTEST_PROP(Dot, Commutative, (const Point& xs, const Point& ys)) {
+        RC_ASSERT(xs.dot(ys) == ys.dot(xs));
+    }
+
+    RC_GTEST_PROP(Dot, Scalar, (const Point& xs, const Point& ys)) {
+        long double scalar = *rc::gen::inRange(-100, 100);
+        RC_ASSERT(scalar * xs.dot(ys) == ys.dot(scalar * xs));
+    }
+
+    TEST(Norm, Zero) {
+        EXPECT_FLOAT_EQ(0.0, Point(0.0, 0.0).norm());
+    }
+
+    RC_GTEST_PROP(Norm, Square, ()) {
+        long double scalar = *rc::gen::inRange(-100, 100);
+        EXPECT_FLOAT_EQ(
+                  std::sqrt(2.0) * std::abs(scalar)
+                , Point(scalar, scalar).norm()
+                );
+    }
+
+    RC_GTEST_PROP(Norm, Scale, (const Point& xs)) {
+        long double scalar = *rc::gen::inRange(0, 100);
+        EXPECT_FLOAT_EQ(
+                  xs.norm() * scalar
+                , (scalar * xs).norm()
+                );
     }
 } // namespace f128
 

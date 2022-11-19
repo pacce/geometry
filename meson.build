@@ -11,7 +11,11 @@ geometry = library(
   , install             : true
   )
 
-geometry_dep = declare_dependency(link_with: geometry, include_directories: includes)
+geometry_dep = declare_dependency(
+  link_with             : geometry
+  , include_directories : includes
+  , dependencies        : dependencies
+  )
 
 if not meson.is_subproject()
   subdir('tests')

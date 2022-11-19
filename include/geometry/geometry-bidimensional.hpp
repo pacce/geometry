@@ -1,0 +1,71 @@
+#ifndef GEOMETRY_BIDIMENSIONAL_HPP__
+#define GEOMETRY_BIDIMENSIONAL_HPP__
+
+#include <Eigen/Core>
+#include <fstream>
+#include <type_traits>
+
+namespace geometry {
+namespace d2 {
+    template <typename Precision>
+    class Point {
+        static_assert(std::is_floating_point<Precision>::value);
+        public:
+            Point() : Point(Precision(), Precision()) {}
+            Point(Precision x, Precision y) : value_(x, y) {}
+            ~Point() {}
+
+            const Precision& x() const { return value_(0); }
+            const Precision& y() const { return value_(1); }
+
+            friend std::ostream&
+            operator<<(std::ostream& os, const Point<Precision>& p) {
+                os << "(" << p.x() << ", " << p.y() << ")";
+                return os;
+            }
+
+            Point<Precision>&
+            operator+=(const Point<Precision>& rhs) {
+                value_ += rhs.value_;
+                return *this;
+            }
+
+            Point<Precision>&
+            operator-=(const Point<Precision>& rhs) {
+                value_ -= rhs.value_;
+                return *this;
+            }
+
+            friend Point<Precision>
+            operator+(const Point<Precision>& lhs, const Point<Precision>& rhs) {
+                Point<Precision> add = lhs;
+                add += rhs;
+                return add;
+            }
+
+            friend Point<Precision>
+            operator-(const Point<Precision>& lhs, const Point<Precision>& rhs) {
+                Point<Precision> add = lhs;
+                add -= rhs;
+                return add;
+            }
+
+            friend bool
+            operator==(const Point<Precision>& lhs, const Point<Precision>& rhs) {
+                const Precision TOL = 0.01;
+                if ((lhs.x() != rhs.x()) || std::abs(lhs.x() - rhs.x()) > TOL) { return false; }
+                if ((lhs.y() != rhs.y()) || std::abs(lhs.y() - rhs.y()) > TOL) { return false; }
+                return true;
+            }
+
+            friend bool
+            operator!=(const Point<Precision>& lhs, const Point<Precision>& rhs) {
+                return !(lhs == rhs);
+            }
+        private:
+            Eigen::Vector<Precision, 2> value_;
+    };
+} // namespace d2
+} // namespace geometry
+
+#endif // GEOMETRY_BIDIMENSIONAL_HPP__

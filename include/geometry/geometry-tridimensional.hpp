@@ -71,19 +71,43 @@ namespace d3 {
                 return mul;
             }
 
-            friend bool
-            operator==(const Point<Precision>& lhs, const Point<Precision>& rhs) {
-                const Precision TOL = 0.01;
-                if (std::abs(lhs.x() - rhs.x()) > TOL) { return false; }
-                if (std::abs(lhs.y() - rhs.y()) > TOL) { return false; }
-                if (std::abs(lhs.z() - rhs.z()) > TOL) { return false; }
-                return true;
+            friend std::partial_ordering
+            operator<=>(const Point<Precision>& lhs, const Point<Precision>& rhs) {
+                auto cmp = [](const Precision& lh, const Precision& rh) {
+                    const Precision TOLERANCE = 0.01;
+                    if (std::isnan(lh) || std::isnan(rh)) { return std::partial_ordering::unordered; }
+
+                    Precision difference = lh - rh;
+                    if ((lh == rh) || (std::abs(difference) <= TOLERANCE)) {
+                        return std::partial_ordering::equivalent;
+                    } else if (difference < 0) {
+                        return std::partial_ordering::less;
+                    } else {
+                        return std::partial_ordering::greater;
+                    }
+                };
+
+                std::partial_ordering comparison = std::partial_ordering::equivalent;
+                if ((comparison = cmp(lhs.x(), rhs.x())) != std::partial_ordering::equivalent) {
+                    return comparison;
+                }
+                if ((comparison = cmp(lhs.y(), rhs.y())) != std::partial_ordering::equivalent) {
+                    return comparison;
+                }
+                if ((comparison = cmp(lhs.z(), rhs.z())) != std::partial_ordering::equivalent) {
+                    return comparison;
+                }
+                return std::partial_ordering::equivalent;
             }
 
-            friend bool
-            operator!=(const Point<Precision>& lhs, const Point<Precision>& rhs) {
-                return !(lhs == rhs);
+            friend bool operator==(const Point<Precision>& lhs, const Point<Precision>& rhs) {
+                return (lhs <=> rhs) == std::partial_ordering::equivalent;
             }
+
+            friend bool operator!=(const Point<Precision>& lhs, const Point<Precision>& rhs) {
+                return (lhs <=> rhs) != std::partial_ordering::equivalent;
+            }
+
 
             Precision
             dot(const Point<Precision>& other) const {

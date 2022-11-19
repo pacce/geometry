@@ -34,3 +34,4 @@
 # Meson
 subprojects/**/
 compile_commands.json
+.cache/

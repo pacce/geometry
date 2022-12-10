@@ -14,7 +14,7 @@ namespace f32 {
     }
 
     RC_GTEST_PROP(Add, Neutral, (const Point& xs)) {
-        Point ys(0.0f, 0.0f, 0.0f);
+        Point ys = Point::zero();
         RC_ASSERT((xs + ys) == xs);
     }
 
@@ -39,7 +39,7 @@ namespace f32 {
     }
 
     TEST(Dot, Zero) {
-        Point xs(0.0f, 0.0f, 0.0f);
+        Point xs = Point::zero();
         EXPECT_FLOAT_EQ(0.0f, xs.dot(xs));
     }
 
@@ -53,7 +53,7 @@ namespace f32 {
     }
 
     TEST(Norm, Zero) {
-        EXPECT_FLOAT_EQ(0.0f, Point(0.0f, 0.0f, 0.0f).norm());
+        EXPECT_FLOAT_EQ(0.0f, Point::zero().norm());
     }
 
     RC_GTEST_PROP(Norm, Square, ()) {
@@ -84,7 +84,7 @@ namespace f64 {
     }
 
     RC_GTEST_PROP(Add, Neutral, (const Point& xs)) {
-        Point ys(0.0, 0.0, 0.0);
+        Point ys = Point::zero();
         RC_ASSERT((xs + ys) == xs);
     }
 
@@ -109,7 +109,7 @@ namespace f64 {
     }
 
     TEST(Dot, Zero) {
-        Point xs(0.0, 0.0, 0.0);
+        Point xs = Point::zero();
         EXPECT_FLOAT_EQ(0.0, xs.dot(xs));
     }
 
@@ -154,7 +154,7 @@ namespace f128 {
     }
 
     RC_GTEST_PROP(Add, Neutral, (const Point& xs)) {
-        Point ys(0.0, 0.0, 0.0);
+        Point ys = Point::zero();
         RC_ASSERT((xs + ys) == xs);
     }
 
@@ -193,7 +193,7 @@ namespace f128 {
     }
 
     TEST(Norm, Zero) {
-        EXPECT_FLOAT_EQ(0.0, Point(0.0, 0.0, 0.0).norm());
+        EXPECT_FLOAT_EQ(0.0, Point::zero().norm());
     }
 
     RC_GTEST_PROP(Norm, Square, ()) {

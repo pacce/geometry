@@ -5,6 +5,9 @@
 #include <fstream>
 #include <type_traits>
 
+#include "geometry-one.hpp"
+#include "geometry-zero.hpp"
+
 namespace geometry {
 namespace d2 {
     template <typename Precision>
@@ -13,6 +16,29 @@ namespace d2 {
         public:
             Point() : Point(Precision(), Precision()) {}
             Point(Precision x, Precision y) : value_(x, y) {}
+
+            static Point<Precision>
+            zero() {
+                Precision z = geometry::zero<Precision>::value;
+
+                return Point(z, z);
+            }
+
+            static Point<Precision>
+            xaxis() {
+                Precision v = geometry::one<Precision>::value;
+                Precision z = geometry::zero<Precision>::value;
+
+                return Point(v, z);
+            }
+
+            static Point<Precision>
+            yaxis() {
+                Precision v = geometry::one<Precision>::value;
+                Precision z = geometry::zero<Precision>::value;
+
+                return Point(z, v);
+            }
             ~Point() {}
 
             const Precision& x() const { return value_(0); }

@@ -14,7 +14,7 @@ namespace f32 {
     }
 
     RC_GTEST_PROP(Add, Neutral, (const Point& xs)) {
-        Point ys(0.0f, 0.0f);
+        Point ys = Point::zero();
         RC_ASSERT((xs + ys) == xs);
     }
 
@@ -35,7 +35,7 @@ namespace f32 {
 
     RC_GTEST_PROP(Mul, Zero, (const Point& xs)) {
         float scalar = 0.0f;
-        RC_ASSERT((xs * scalar) == Point(0.0f, 0.0f));
+        RC_ASSERT((xs * scalar) == Point::zero());
     }
 
     TEST(Dot, Zero) {
@@ -53,7 +53,7 @@ namespace f32 {
     }
 
     TEST(Norm, Zero) {
-        EXPECT_FLOAT_EQ(0.0f, Point(0.0f, 0.0f).norm());
+        EXPECT_FLOAT_EQ(0.0f, Point::zero().norm());
     }
 
     RC_GTEST_PROP(Norm, Square, ()) {
@@ -84,7 +84,7 @@ namespace f64 {
     }
 
     RC_GTEST_PROP(Add, Neutral, (const Point& xs)) {
-        Point ys(0.0, 0.0);
+        Point ys = Point::zero();
         RC_ASSERT((xs + ys) == xs);
     }
 
@@ -105,7 +105,7 @@ namespace f64 {
 
     RC_GTEST_PROP(Mul, Zero, (const Point& xs)) {
         double scalar = 0.0;
-        RC_ASSERT((xs * scalar) == Point(0.0, 0.0));
+        RC_ASSERT((xs * scalar) == Point::zero());
     }
 
     TEST(Dot, Zero) {
@@ -154,7 +154,7 @@ namespace f128 {
     }
 
     RC_GTEST_PROP(Add, Neutral, (const Point& xs)) {
-        Point ys(0.0, 0.0);
+        Point ys = Point::zero();
         RC_ASSERT((xs + ys) == xs);
     }
 
@@ -175,7 +175,7 @@ namespace f128 {
 
     RC_GTEST_PROP(Mul, Zero, (const Point& xs)) {
         long double scalar = 0.0;
-        RC_ASSERT((xs * scalar) == Point(0.0, 0.0));
+        RC_ASSERT((xs * scalar) == Point::zero());
     }
 
     TEST(Dot, Zero) {
@@ -193,7 +193,7 @@ namespace f128 {
     }
 
     TEST(Norm, Zero) {
-        EXPECT_FLOAT_EQ(0.0, Point(0.0, 0.0).norm());
+        EXPECT_FLOAT_EQ(0.0, Point::zero().norm());
     }
 
     RC_GTEST_PROP(Norm, Square, ()) {

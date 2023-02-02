@@ -2,6 +2,7 @@
 #define GEOMETRY_TRIDIMENSIONAL_HPP__
 
 #include <Eigen/Core>
+#include <Eigen/Geometry>
 #include <fstream>
 #include <type_traits>
 
@@ -147,6 +148,11 @@ namespace d3 {
             Precision
             dot(const Point<Precision>& other) const {
                 return value_.dot(other.value_);
+            }
+
+            Point<Precision>
+            cross(const Point<Precision>& other) const {
+                return Point(value_.cross(other.value_));
             }
 
             Precision

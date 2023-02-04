@@ -170,6 +170,19 @@ namespace d3 {
                 this->value_.normalize();
                 return *this;
             }
+
+            Point<Precision>&
+            rotate(Precision radian, const Point<Precision>& axis) {
+                Eigen::AngleAxis<Precision> rotate(radian, axis.value_);
+                value_ = rotate * value_;
+                return *this;
+            }
+
+            Point<Precision>
+            rotated(Precision radian, const Point<Precision>& axis) {
+                Eigen::AngleAxis<Precision> rotate(radian, axis.value_);
+                return Point<Precision>(rotate * value_);
+            }
         private:
             Point(const Eigen::Vector<Precision, 3>& value) : value_(value) {}
             Eigen::Vector<Precision, 3> value_;

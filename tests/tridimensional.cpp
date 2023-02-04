@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <numbers>
 #include <rapidcheck/gtest.h>
 
 #include "geometry-arbitrary.hpp"
@@ -95,6 +96,36 @@ namespace f32 {
         EXPECT_EQ((scalar * y).normalize(), y);
         EXPECT_EQ((scalar * z).normalize(), z);
     }
+
+    TEST(Rotate, X) {
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+        Point z = Point::zaxis();
+
+        float angle = std::numbers::pi_v<float> * 0.5;
+        EXPECT_EQ(y.rotated(angle, x),  1.0f * z);
+        EXPECT_EQ(z.rotated(angle, x), -1.0f * y);
+    }
+
+    TEST(Rotate, Y) {
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+        Point z = Point::zaxis();
+
+        float angle = std::numbers::pi_v<float> * 0.5;
+        EXPECT_EQ(x.rotated(angle, y), -1.0f * z);
+        EXPECT_EQ(z.rotated(angle, y),  1.0f * x);
+    }
+
+    TEST(Rotate, Z) {
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+        Point z = Point::zaxis();
+
+        float angle = std::numbers::pi_v<float> * 0.5;
+        EXPECT_EQ(x.rotated(angle, z),  1.0f * y);
+        EXPECT_EQ(y.rotated(angle, z), -1.0f * x);
+    }
 } // namespace f32
 
 namespace f64 {
@@ -189,6 +220,36 @@ namespace f64 {
         EXPECT_EQ((scalar * y).normalize(), y);
         EXPECT_EQ((scalar * z).normalize(), z);
     }
+
+    TEST(Rotate, X) {
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+        Point z = Point::zaxis();
+
+        double angle = std::numbers::pi_v<double> * 0.5;
+        EXPECT_EQ(y.rotated(angle, x),  1.0f * z);
+        EXPECT_EQ(z.rotated(angle, x), -1.0f * y);
+    }
+
+    TEST(Rotate, Y) {
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+        Point z = Point::zaxis();
+
+        double angle = std::numbers::pi_v<double> * 0.5;
+        EXPECT_EQ(x.rotated(angle, y), -1.0f * z);
+        EXPECT_EQ(z.rotated(angle, y),  1.0f * x);
+    }
+
+    TEST(Rotate, Z) {
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+        Point z = Point::zaxis();
+
+        double angle = std::numbers::pi_v<double> * 0.5;
+        EXPECT_EQ(x.rotated(angle, z),  1.0f * y);
+        EXPECT_EQ(y.rotated(angle, z), -1.0f * x);
+    }
 } // namespace f64
 
 namespace f128 {
@@ -282,6 +343,36 @@ namespace f128 {
         EXPECT_EQ((scalar * x).normalize(), x);
         EXPECT_EQ((scalar * y).normalize(), y);
         EXPECT_EQ((scalar * z).normalize(), z);
+    }
+
+    TEST(Rotate, X) {
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+        Point z = Point::zaxis();
+
+        long double angle = std::numbers::pi_v<long double> * 0.5;
+        EXPECT_EQ(y.rotated(angle, x),  1.0f * z);
+        EXPECT_EQ(z.rotated(angle, x), -1.0f * y);
+    }
+
+    TEST(Rotate, Y) {
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+        Point z = Point::zaxis();
+
+        long double angle = std::numbers::pi_v<long double> * 0.5;
+        EXPECT_EQ(x.rotated(angle, y), -1.0f * z);
+        EXPECT_EQ(z.rotated(angle, y),  1.0f * x);
+    }
+
+    TEST(Rotate, Z) {
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+        Point z = Point::zaxis();
+
+        long double angle = std::numbers::pi_v<long double> * 0.5;
+        EXPECT_EQ(x.rotated(angle, z),  1.0f * y);
+        EXPECT_EQ(y.rotated(angle, z), -1.0f * x);
     }
 } // namespace f128
 

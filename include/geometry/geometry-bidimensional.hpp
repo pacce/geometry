@@ -51,10 +51,9 @@ namespace d2 {
                 return os;
             }
 
-            Point<Precision>&
-            operator-() {
-                value_ = -value_;
-                return *this;
+            Point<Precision>
+            operator-() const {
+                return Point<Precision>(-value_);
             }
 
             Point<Precision>&

@@ -93,15 +93,11 @@ namespace f32 {
     }
 
     TEST(Neg, X) {
-        Point xs =  Point::xaxis();
-        Point ys = -Point::xaxis();
-        EXPECT_EQ(Point(-1.0, 0.0), ys);
+        EXPECT_EQ(Point(-1.0,  0.0), -Point::xaxis());
     }
 
     TEST(Neg, Y) {
-        Point xs =  Point::yaxis();
-        Point ys = -Point::yaxis();
-        EXPECT_EQ(Point(0.0, -1.0), ys);
+        EXPECT_EQ(Point( 0.0, -1.0), -Point::yaxis());
     }
 } // namespace f32
 
@@ -195,15 +191,11 @@ namespace f64 {
     }
 
     TEST(Neg, X) {
-        Point xs =  Point::xaxis();
-        Point ys = -Point::xaxis();
-        EXPECT_EQ(Point(-1.0, 0.0), ys);
+        EXPECT_EQ(Point(-1.0,  0.0), -Point::xaxis());
     }
 
     TEST(Neg, Y) {
-        Point xs =  Point::yaxis();
-        Point ys = -Point::yaxis();
-        EXPECT_EQ(Point(0.0, -1.0), ys);
+        EXPECT_EQ(Point( 0.0, -1.0), -Point::yaxis());
     }
 } // namespace f64
 
@@ -297,15 +289,11 @@ namespace f128 {
     }
 
     TEST(Neg, X) {
-        Point xs =  Point::xaxis();
-        Point ys = -Point::xaxis();
-        EXPECT_EQ(Point(-1.0, 0.0), ys);
+        EXPECT_EQ(Point(-1.0,  0.0), -Point::xaxis());
     }
 
     TEST(Neg, Y) {
-        Point xs =  Point::yaxis();
-        Point ys = -Point::yaxis();
-        EXPECT_EQ(Point(0.0, -1.0), ys);
+        EXPECT_EQ(Point( 0.0, -1.0), -Point::yaxis());
     }
 } // namespace f128
 

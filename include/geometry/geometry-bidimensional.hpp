@@ -139,7 +139,19 @@ namespace d2 {
             norm() const {
                 return value_.norm();
             }
+
+            Point<Precision>
+            normalized() const {
+                return Point(value_.normalized());
+            }
+
+            Point<Precision>&
+            normalize() {
+                this->value_.normalize();
+                return *this;
+            }
         private:
+            Point(const Eigen::Vector<Precision, 2>& value) : value_(value) {}
             Eigen::Vector<Precision, 2> value_;
     };
 } // namespace d2

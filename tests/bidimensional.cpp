@@ -71,6 +71,26 @@ namespace f32 {
                 , (scalar * xs).norm()
                 );
     }
+
+    RC_GTEST_PROP(Normalized, Scale, ()) {
+        float scalar = *rc::gen::inRange(1, 100);
+
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+
+        EXPECT_EQ((scalar * x).normalized(), x);
+        EXPECT_EQ((scalar * y).normalized(), y);
+    }
+
+    RC_GTEST_PROP(Normalize, Scale, ()) {
+        float scalar = *rc::gen::inRange(1, 100);
+
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+
+        EXPECT_EQ((scalar * x).normalize(), x);
+        EXPECT_EQ((scalar * y).normalize(), y);
+    }
 } // namespace f32
 
 namespace f64 {
@@ -141,6 +161,26 @@ namespace f64 {
                 , (scalar * xs).norm()
                 );
     }
+
+    RC_GTEST_PROP(Normalized, Scale, ()) {
+        double scalar = *rc::gen::inRange(1, 100);
+
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+
+        EXPECT_EQ((scalar * x).normalized(), x);
+        EXPECT_EQ((scalar * y).normalized(), y);
+    }
+
+    RC_GTEST_PROP(Normalize, Scale, ()) {
+        double scalar = *rc::gen::inRange(1, 100);
+
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+
+        EXPECT_EQ((scalar * x).normalize(), x);
+        EXPECT_EQ((scalar * y).normalize(), y);
+    }
 } // namespace f64
 
 namespace f128 {
@@ -210,6 +250,26 @@ namespace f128 {
                   xs.norm() * scalar
                 , (scalar * xs).norm()
                 );
+    }
+
+    RC_GTEST_PROP(Normalized, Scale, ()) {
+        long double scalar = *rc::gen::inRange(1, 100);
+
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+
+        EXPECT_EQ((scalar * x).normalized(), x);
+        EXPECT_EQ((scalar * y).normalized(), y);
+    }
+
+    RC_GTEST_PROP(Normalize, Scale, ()) {
+        long double scalar = *rc::gen::inRange(1, 100);
+
+        Point x = Point::xaxis();
+        Point y = Point::yaxis();
+
+        EXPECT_EQ((scalar * x).normalize(), x);
+        EXPECT_EQ((scalar * y).normalize(), y);
     }
 } // namespace f128
 

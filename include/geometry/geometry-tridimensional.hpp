@@ -62,6 +62,12 @@ namespace d3 {
             }
 
             Point<Precision>&
+            operator-() {
+                value_ = -value_;
+                return *this;
+            }
+
+            Point<Precision>&
             operator+=(const Point<Precision>& rhs) {
                 value_ += rhs.value_;
                 return *this;

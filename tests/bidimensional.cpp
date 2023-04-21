@@ -91,6 +91,18 @@ namespace f32 {
         EXPECT_EQ((scalar * x).normalize(), x);
         EXPECT_EQ((scalar * y).normalize(), y);
     }
+
+    TEST(Neg, X) {
+        Point xs =  Point::xaxis();
+        Point ys = -Point::xaxis();
+        EXPECT_EQ(Point(-1.0, 0.0), ys);
+    }
+
+    TEST(Neg, Y) {
+        Point xs =  Point::yaxis();
+        Point ys = -Point::yaxis();
+        EXPECT_EQ(Point(0.0, -1.0), ys);
+    }
 } // namespace f32
 
 namespace f64 {
@@ -181,6 +193,18 @@ namespace f64 {
         EXPECT_EQ((scalar * x).normalize(), x);
         EXPECT_EQ((scalar * y).normalize(), y);
     }
+
+    TEST(Neg, X) {
+        Point xs =  Point::xaxis();
+        Point ys = -Point::xaxis();
+        EXPECT_EQ(Point(-1.0, 0.0), ys);
+    }
+
+    TEST(Neg, Y) {
+        Point xs =  Point::yaxis();
+        Point ys = -Point::yaxis();
+        EXPECT_EQ(Point(0.0, -1.0), ys);
+    }
 } // namespace f64
 
 namespace f128 {
@@ -270,6 +294,18 @@ namespace f128 {
 
         EXPECT_EQ((scalar * x).normalize(), x);
         EXPECT_EQ((scalar * y).normalize(), y);
+    }
+
+    TEST(Neg, X) {
+        Point xs =  Point::xaxis();
+        Point ys = -Point::xaxis();
+        EXPECT_EQ(Point(-1.0, 0.0), ys);
+    }
+
+    TEST(Neg, Y) {
+        Point xs =  Point::yaxis();
+        Point ys = -Point::yaxis();
+        EXPECT_EQ(Point(0.0, -1.0), ys);
     }
 } // namespace f128
 

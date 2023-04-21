@@ -4,6 +4,7 @@
 #include <Eigen/Core>
 #include <fstream>
 #include <type_traits>
+#include <iostream>
 
 #include "geometry-one.hpp"
 #include "geometry-zero.hpp"
@@ -48,6 +49,12 @@ namespace d2 {
             operator<<(std::ostream& os, const Point<Precision>& p) {
                 os << "(" << p.x() << ", " << p.y() << ")";
                 return os;
+            }
+
+            Point<Precision>&
+            operator-() {
+                value_ = -value_;
+                return *this;
             }
 
             Point<Precision>&

@@ -3,17 +3,8 @@ project('geometry', 'cpp', version : '0.1.0', default_options : ['warning_level=
 includes      = include_directories('include')
 dependencies  = [dependency('eigen3')]
 
-geometry = library(
-  meson.project_name()
-  , []
-  , include_directories : includes
-  , dependencies        : dependencies
-  , install             : true
-  )
-
 geometry_dep = declare_dependency(
-  link_with             : geometry
-  , include_directories : includes
+    include_directories : includes
   , dependencies        : dependencies
   )
 
